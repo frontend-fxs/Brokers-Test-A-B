@@ -1,0 +1,61 @@
+[IT] - Broker Listing vs Reviews Snapshots AB Test
+
+Description
+Conduct an AB test comparing two versions:
+
+Reviews Snapshot – Focused on broker reviews.
+
+Broker Listing Snapshot – Focused on a list of brokers.
+
+Each version should be displayed 50% of the time.
+
+Broker Order
+The broker order should follow these guidelines:
+
+Both versions: Pepperstone, XM, Moneta, TradingPro.
+
+Broker Listing Snapshot only: FxPro, IC Markets, Octa.
+
+Objective
+The goal is to compare the performance of the Reviews Snapshot format against the Broker Listing Snapshot, determining which approach is more effective in driving value for BL/Reviews advertisers.
+
+Definition of Done
+Both versions should use similar screen space.
+
+The listed brokers should be almost identical, except for the additional brokers required for the Broker Listing Snapshot.
+
+Implementation Plan Using innerHTML
+Data Preparation
+Extract broker data in a structured format for each version.
+
+Ensure the required brokers are included in the appropriate dataset.
+
+AB Test Logic
+Use a randomization method to display either Reviews Snapshot or Broker Listing Snapshot. Use FXStreet.Global.RandomClient that returns a integer.
+
+Ensure an even split (50/50) in test distribution.
+
+Dynamic HTML Rendering
+Create a container element within the widget.
+
+Use JavaScript to dynamically generate and inject HTML content using innerHTML.
+
+Maintain a responsive layout to ensure usability across various screen sizes.
+
+Styling and Design
+Reuse CSS styles to ensure consistency and visual clarity.
+
+Use a flexible layout structure that adapts to different screen resolutions.
+
+Analytics Integration
+Track user interactions with broker links to gather performance data.
+
+Capture test version details for analysis.
+
+Accessibility Considerations
+Ensure proper semantic structure for screen reader compatibility.
+
+Implement clear focus states for interactive elements.
+
+Final Notes
+This approach ensures dynamic content rendering without requiring React, maintaining efficiency while allowing seamless integration into the Sitefinity CMS environment. The test implementation should provide measurable insights into which format performs better for engagement and conversion rates.

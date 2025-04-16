@@ -1,0 +1,308 @@
+.broker-list {
+    display: flex;
+    padding: 8px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: #FFF3E5;
+    width: 100%;
+    container-type: inline-size;
+}
+
+@media(min-width:1280px) {
+    .broker-list.mobile {
+        display: none;
+    }
+}
+
+.broker-card {
+    border: 1px solid #37404E;
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.broker-details {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+}
+
+.broker-details:hover {
+    text-decoration: none;
+}
+
+img.logo {
+    max-width: 30px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.broker-name {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 0;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 52px);
+}
+
+.cta-button {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #003e99;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.cta-button:focus,
+.cta-button:hover {
+    background-color: #0053CC;
+}
+
+.cta-button:focus {
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 3px #0053CC;
+}
+
+.disclosure {
+    position: relative;
+}
+
+.disclosure-checkbox {
+    display: none;
+}
+
+.disclosure-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.disclosure-content {
+    font-size: 10px;
+    line-height: 14px;
+    color: #7d8ca1;
+    margin: 0;
+    max-height: 14px;
+    max-width: calc(100% - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: max-height 0.3s ease-in-out;
+    font-weight: 400;
+}
+
+.chevron-icon {
+    transition: transform 0.3s ease-in-out;
+    stroke: #7D8CA1;
+}
+
+.disclosure-checkbox:checked~.disclosure-label {
+    flex-direction: column;
+}
+
+.disclosure-checkbox:checked~.disclosure-label .disclosure-content {
+    max-height: none;
+    white-space: normal;
+}
+
+.disclosure-checkbox:checked~.disclosure-label .chevron-icon {
+    transform: rotate(180deg);
+    align-self: flex-end;
+}
+
+.chart-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.chart-item {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.chart-item-label {
+    font-size: 12px;
+    line-height: 14px;
+    width: 60px;
+}
+
+.chart-bar {
+    position: relative;
+    width: calc(100% - 83px);
+    height: 8px;
+    border-radius: 4px;
+    background: #F5F5F5;
+}
+
+.chart-bar-value {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #FFD099;
+}
+
+.chart-value {
+    width: 15px;
+    color: #7D8CA1;
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 400;
+}
+
+@container (min-width: 350px) {
+    .broker-list .chart-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.broker-top {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(73, 73, 79);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.broker-logo {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(73, 73, 79);
+}
+
+.broker-link-logo {
+    font-weight: 700;
+    transition: 0.25s ease-in;
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    color: rgb(228, 135, 27);
+    text-decoration: none solid rgb(228, 135, 27);
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(228, 135, 27);
+}
+
+.broker-logo-img {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    max-width: 100%;
+    height: 46px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(228, 135, 27);
+    width: 46px;
+    border-radius: 8px;
+}
+
+.broker-top-right {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+    padding: 4px 0px 0px;
+    border: 0px none rgb(73, 73, 79);
+    display: flex;
+    padding-top: 4px;
+    flex-direction: column;
+    flex: 0 0 calc(100% - 56px);
+    width: calc(100% - 56px);
+    align-self: stretch;
+}
+
+.broker-sponsored-wrapper {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(73, 73, 79);
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.broker-name-link {
+    font-weight: 700;
+    transition: 0.25s ease-in;
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    color: rgb(0, 0, 0);
+    text-decoration: none solid rgb(0, 0, 0);
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(0, 0, 0);
+    font-family: Lato;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.07px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 50px);
+}
+
+.broker-partner {
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    margin: 0px;
+    padding: 2px 8px;
+    border: 0px none rgb(255, 137, 0);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background-color: rgb(255, 243, 229);
+    color: rgb(255, 137, 0);
+    text-align: center;
+    font-family: Lato;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.183px;
+    align-self: flex-start;
+}
+
+.review-link {
+    font-weight: 400;
+    transition: 0.25s ease-in;
+    box-sizing: border-box;
+    text-rendering: optimizelegibility;
+    color: rgb(55, 64, 78);
+    text-decoration: underline 1px solid rgb(0, 11, 31);
+    margin: 0px;
+    padding: 0px;
+    border: 0px none rgb(55, 64, 78);
+    font-family: Lato;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 18px;
+}
