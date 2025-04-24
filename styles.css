@@ -10,11 +10,14 @@
   container-type: inline-size;
 }
 
-.broker-list.mobile {
+.broker-list.desktop {
   display: none;
 }
 
 @media (min-width: 1280px) {
+  .broker-list.desktop {
+    display: flex;
+  }
   .broker-list.mobile {
     display: none;
   }
@@ -29,36 +32,6 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.broker-details {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-start;
-  align-items: center;
-  text-decoration: none;
-}
-
-.broker-details:hover {
-  text-decoration: none;
-}
-
-img.logo {
-  max-width: 30px;
-  height: 30px;
-  border-radius: 4px;
-}
-
-.broker-name {
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 700;
-  margin: 0;
-  color: #000;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: calc(100% - 52px);
 }
 
 .cta-button {
@@ -237,6 +210,7 @@ img.logo {
   flex: 0 0 calc(100% - 56px);
   width: calc(100% - 56px);
   align-self: stretch;
+  justify-content: center;
 }
 
 .broker-sponsored-wrapper {
@@ -312,3 +286,4 @@ img.logo {
   font-style: normal;
   line-height: 18px;
 }
+/* Removed unused .broker-details, .broker-name, img.logo */

@@ -183,7 +183,7 @@
               data-ga4event-element="open_account" 
               data-ga4event-feature-1="${broker.slug}" 
               data-ga4event-feature-2="test_0001" 
-              >Open account
+              >Open Account
           </a>
           <div class="disclosure">
               <input 
@@ -229,7 +229,7 @@
                     data-ga4event-clk-name="broker_review_click" 
                     data-ga4event-element="logo" 
                     data-ga4event-feature-1="${broker.slug}" 
-                    data-ga4event-feature-2="test_0001" 
+                    data-ga4event-feature-2="test_0002" 
                     >
                     <img 
                         src="${broker.spreadsImageUrl}" 
@@ -249,19 +249,10 @@
                         data-ga4event-clk-name="broker_review_click" 
                         data-ga4event-element="broker_name" 
                         data-ga4event-feature-1="${broker.slug}" 
-                        data-ga4event-feature-2="test_0001" 
+                        data-ga4event-feature-2="test_0002" 
                         >${broker.name}</a>
                         ${broker.isPartner ? '<div class="broker-partner">Sponsor</div>' : ""}
                 </div>
-                <a href="${broker.reviewUrl}"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="review-link"
-                    data-ga4event-clk-name="broker_review_click" 
-                    data-ga4event-element="read_review" 
-                    data-ga4event-feature-1="${broker.slug}" 
-                    data-ga4event-feature-2="test_0001" 
-                    >Read review</a>
             </div>
         </div>
         <div class="chart-container">
@@ -309,15 +300,15 @@
             </div>
         </div>
         <a 
-            href="${broker.liveAccountUrl}" 
+            href="${broker.reviewUrl}"
             target="_blank"
             rel="sponsored noopener noreferrer nofollow" 
             class="cta-button"
             data-ga4event-clk-name="broker_review_click" 
-            data-ga4event-element="open_account" 
+            data-ga4event-element="read_review" 
             data-ga4event-feature-1="${broker.slug}" 
-            data-ga4event-feature-2="test_0001" 
-            >Open account
+            data-ga4event-feature-2="test_0002"
+            >Read Review
         </a>
         <div class="disclosure">
             <input 
@@ -361,7 +352,7 @@
         : (b) => brokerCardTemplate(b, idSuffix);
     let htmlBrokerList = "";
     for (let i = 0; i < loopIndex; i++) {
-      htmlBrokerList += template(brokersData[i]);
+      htmlBrokerList += template(brokersData[i], idSuffix);
     }
     brokerList.innerHTML = htmlBrokerList;
   });
