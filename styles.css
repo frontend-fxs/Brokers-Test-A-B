@@ -60,6 +60,7 @@
 
 .disclosure {
   position: relative;
+  min-height: 24px;
 }
 
 .disclosure-checkbox {

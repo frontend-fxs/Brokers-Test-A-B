@@ -88,42 +88,7 @@
       tradingSettings: 8.0,
       trust: 5.0,
       userExperience: 7.0,
-    },
-    {
-      name: "FxPro",
-      spreadsImageUrl:
-        "https://editorial.fxsstatic.com/brokers/FXPro_2022_Gran.png",
-      reviewUrl: "null",
-      slug: "https://www.fxstreet.com/brokers/fxpro",
-      isPartner: false,
-      liveAccountUrl:
-        "http://pubads.g.doubleclick.net/gampad/clk?id=6241662234&iu=/7138/FXS30",
-      disclosureMessage:
-        "Risk Warning: Contracts for Difference ('CFDs') are complex financial products that are traded on margin. Trading CFDs carries a high level of risk since leverage can work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all investors because you may lose all your invested capital. You should not risk more than you are prepared to lose. Before deciding to trade, you need to ensure that you understand the risks involved taking into account your investment objectives and level of experience. Past performance of CFDs is not a reliable indicator of future results. Most CFDs have no set maturity date. Hence, a CFD position matures on the date you choose to close an existing open position. Seek independent advice, if necessary. Please read FxPro's full 'Risk Disclosure Statement'.",
-    },
-    {
-      name: "IC Markets",
-      spreadsImageUrl:
-        "https://editorial.fxsstatic.com/brokers/ICMarkets2022_Gran.png",
-      reviewUrl: null,
-      slug: "https://www.fxstreet.com/brokers/icmarkets",
-      isPartner: false,
-      liveAccountUrl:
-        "http://pubads.g.doubleclick.net/gampad/clk?id=6724073676&iu=/7138/FXS30",
-      disclosureMessage:
-        "IC Markets (EU) Ltd is a limited company registered in Cyprus under company number HE 356877, and is authorized and regulated by the Cyprus Securities and Exchange Commission with License No. 362/18. The head office address is at 86 Franklinou Roosvelt, 4th floor, Office 401, 3011 Omonoia, Limassol, Cyprus. \nIC Markets is a trading name of IC Markets (EU) Ltd. \nRisk Warning: CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. 70.64% of retail investor accounts lose money when trading CFDs with IC Markets (EU) Ltd. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money. There is a possibility to lose all your initial capital. For further information please consider our Risk Disclosure Notice. \nThe information on this site is not intended for residents of Brazil, Belgium, the United Kingdom or the United States or use by any person in any country or jurisdiction where such distribution or use would be contrary to local law or regulation.",
-    },
-    {
-      name: "Octa",
-      spreadsImageUrl:
-        "https://editorial.fxsstatic.com/brokers/octa_2025_Gran.png",
-      reviewUrl: "https://www.fxstreet.com/brokers/reviews/octa",
-      slug: "octa-fx-uk-limited",
-      isPartner: false,
-      liveAccountUrl:
-        "http://pubads.g.doubleclick.net/gampad/clk?id=6247950474&iu=/7138/FXS30",
-      disclosureMessage: "Forex margin trading involves substantial risks.",
-    },
+    }
   ];
 
   function brokerCardTemplate(broker, idSuffix = "") {
@@ -163,6 +128,7 @@
                           >${broker.name}</a>
                           ${broker.isPartner ? '<div class="broker-partner">Sponsor</div>' : ""}
                   </div>
+                  ${broker.reviewUrl ? `
                   <a href="${broker.reviewUrl}"
                       target="_blank" 
                       rel="noopener noreferrer"
@@ -171,7 +137,7 @@
                       data-ga4event-element="read_review" 
                       data-ga4event-feature-1="${broker.slug}" 
                       data-ga4event-feature-2="test_0001" 
-                      >Read review</a>
+                      >Read review</a>` : ''}
               </div>
           </div>
           <a 
@@ -185,6 +151,9 @@
               data-ga4event-feature-2="test_0001" 
               >Open Account
           </a>
+          ${broker.disclosureMessage === '' ? `
+          <div class="disclosure"></div>
+          ` : `
           <div class="disclosure">
               <input 
                   type="checkbox" 
@@ -212,6 +181,7 @@
                   </svg>
               </label>
           </div>
+          `}
       </div>
     `;
   }
@@ -299,6 +269,7 @@
                 <span class="chart-value">${broker.userExperience}</span>
             </div>
         </div>
+        ${broker.reviewUrl ? `
         <a 
             href="${broker.reviewUrl}"
             target="_blank"
@@ -309,7 +280,10 @@
             data-ga4event-feature-1="${broker.slug}" 
             data-ga4event-feature-2="test_0002"
             >Read Review
-        </a>
+        </a>` : ''}
+        ${broker.disclosureMessage === '' ? `
+        <div class="disclosure">&nbsp;</div>
+        ` : `
         <div class="disclosure">
             <input 
                 type="checkbox" 
@@ -337,15 +311,37 @@
                 </svg>
             </label>
         </div>
+        `}
       </div>
     `;
   }
+
+  // Ensure only one disclosure is open at a time
+  function setupDisclosureToggle() {
+    const checkboxes = document.querySelectorAll('.disclosure-checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          checkboxes.forEach(cb => {
+            if (cb !== this) cb.checked = false;
+          });
+        }
+      });
+    });
+  }
+
+  // Call this after rendering broker cards
+  if (typeof window !== 'undefined') {
+    window.addEventListener('DOMContentLoaded', setupDisclosureToggle);
+  }
+
+  // If broker cards are rendered dynamically, call setupDisclosureToggle() after rendering
 
   // Render both lists
   configs.forEach(({ selector, idSuffix }) => {
     const brokerList = document.querySelector(selector);
     if (!brokerList) return;
-    const loopIndex = desiredIndex === 0 ? 3 : 7;
+    const loopIndex = desiredIndex === 0 ? 3 : 4;
     const template =
       desiredIndex === 0
         ? brokerRatingTemplate
